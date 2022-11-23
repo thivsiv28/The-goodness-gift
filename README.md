@@ -12,6 +12,8 @@ Project 3 - Interactive MERN Stack Single-Page Application
 
 ## Description
 
+.
+
 ## Deployment
 
 [Proposal](https://docs.google.com/document/d/1ta4Zxrm-0kEhTNWamWjecVx_HhVHa7M1UUcm4nnQdfc/edit)
