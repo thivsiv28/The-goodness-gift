@@ -17,6 +17,28 @@ type User {
     password: String
     savedFundraisers: [SavedFundraiser]
 
-    
+ type Query {
+    me: User
+    savedFundraisers: [SavedFundraiser]
+ }  
+ 
+ input Fundraiser {
+    posters: [String]
+    description: String!
+    fundraiserId: String!
+    image: String
+    link: String
+    title: String!
+
+ }
+
+ type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addFundraiser(fundraiser: Fundraiser!) User
+    removeFundraiser(fundraiserId: String!): User
+
+ }
+ `;
 
 module.exports = typeDefs;
