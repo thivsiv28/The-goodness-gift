@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button , Alert } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
@@ -17,20 +17,20 @@ const SignupForm = () => {
     const [addUser, {error, data}] = useMutation(ADD_USER);
 
     const handleInputChange = (event) => {
-        const {name, value} =event.target;
+        const {name, value} = event.target;
         setUserFormData({...userFormData, [name]: value});
     };
     const handleFormSubmit = async (event) => {
         event.preventDefault();
     
         const form = event.currentTarget;
-        if (form.checkValidity()== flase) {
+        if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
         try {
             const { data } = await addUser({
-                variables: {...userFormData},
+                variables: { ...userFormData },
             });
             Auth.login(data.addUser.token);
 
@@ -46,20 +46,20 @@ const SignupForm = () => {
 
     return (
         <>
-        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        <Form noValidate validated= {validated} onSubmit= {handleFormSubmit}>
             {error && (
                 <Alert dismissible variant="danger">
                     {error.message}
                 </Alert>
             )}
             <Form.Group>
-                <Form.Label htmlFor='username'>Username</Form.Label>
+                <Form.Label htmlFor="username">Username</Form.Label>
                 <Form.Control
                 type="text"
-                placeholder ="Your username"
+                placeholder="Your username"
                 name="username"
                 onChange= {handleInputChange}
-                value={userFormData.username}
+                value= {userFormData.username}
                 required />
                 <Form.Control.Feedback type="invalid">
                     Username is required.
@@ -72,8 +72,8 @@ const SignupForm = () => {
                 type="email"
                 placeholder="Your email address"
                 name="email"
-                onChange={handleInputChange}
-                value={userFormData.email}
+                onChange= {handleInputChange}
+                value= {userFormData.email}
                 required/>
                 <Form.Control.Feedback type="invalid">
                     Email is required.
@@ -86,12 +86,12 @@ const SignupForm = () => {
                 type="password"
                 placeholder="Your password"
                 name="password"
-                onChange={handleInputChange}
-                value={userFormData.password}
+                onChange= {handleInputChange}
+                value= {userFormData.password}
                 required/>
                 <Form.Control.Feedback
 type="invalid">
-    Password is require.
+    Password is required.
     </Form.Control.Feedback>          
     </Form.Group>
     <Button
@@ -109,7 +109,6 @@ type="invalid">
  </Form>
     </>
     );
-    
 };
 
 export default SignupForm;

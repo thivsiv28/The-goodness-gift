@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-import SignupForm from "./SignupForm";
+import SignupForm from './SignupForm';
 import LoginForm from "./LoginForm";
 
 import Auth from '../utils/auth';
@@ -18,7 +18,7 @@ const AppNavBar = () => {
     <Navbar.Brand as={Link} to='/'>
         The Goodness Gift 
     </Navbar.Brand>
-    <Navbar.Toggle aria-controls="navbar"/>
+    <Navbar.Toggle aria-controls='navbar'/>
     <Navbar.Collapse id='navbar'>
         <Nav className='ml-auto'>
         <Nav.Link as={Link} to='/'>
