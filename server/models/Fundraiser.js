@@ -11,7 +11,7 @@ const fundraiserSchema = new Schema({
     required: true,
   },
   // saved fundrasier id from from site
-  fundrasierId: {
+  fundraiserId: {
     type: String,
     required: true,
   },
