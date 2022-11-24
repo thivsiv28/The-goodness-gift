@@ -15,7 +15,6 @@ import { REMOVE_FUNDRAISER } from "../utils/mutations";
 
 const SavedFundraisers = () => {
     const [userData, setUserData] = useState({});
-    //const [userInfo, setUserInfo] = useState({});
     const { loading } = useQuery(GET_ME, {
       onCompleted: (dt) => {
         setUserData(dt.me);
@@ -88,7 +87,7 @@ const SavedFundraisers = () => {
                 ) : null}
                 <Card.Body>
                   <Card.Title>{fundraiser.title}</Card.Title>
-                  <p className="small">Link to the Fundraiser: {fundraiser.url}</p>
+                  <p className="small">Poster: {fundraiser.poster}</p>
                   <Card.Text>{fundraiser.description}</Card.Text>
                   <Button
                     className="btn-block btn-danger"
