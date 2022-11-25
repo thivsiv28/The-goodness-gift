@@ -1,44 +1,67 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-type SavedFundraiser {
-    poster: [String]
+  type Fundraiser {
+    posterUsername: String!
     description: String!
-    fundraiserId: String!
     image: String
-    link: String
     title: String!
-}
+    contributions: [Contribution]
+    createdAt: String
+  }
 
-type User {
+  type User {
     _id: ID!
     username: String!
     email: String!
     password: String
-    savedFundraisers: [SavedFundraiser]
+    createdFundraisers: [Fundraiser]
+  }
 
- type Query {
-    me: User
-    savedFundraisers: [SavedFundraiser]
- }  
- 
- input Fundraiser {
-    posters: [String]
-    description: String!
+  type Contribution {
+    contributerEmail: String!
+    contributedAmount: Float
+    contributedAt: String
+  }
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  input ContributionInput {
+    contributerEmail: String!
+    contributedAmount: Float
     fundraiserId: String!
+  }
+
+  input FundraiserInput {
+    posterUsername: String!
+    description: String!
     image: String
-    link: String
     title: String!
+  }
 
- }
-
- type Mutation {
+  type Query {
+    me: User
+    createdFundraisers: [Fundraiser]
+    getFundraiserById(fundraiserId: String!): Fundraiser
+  }
+  type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addFundraiser(fundraiser: Fundraiser!) User
+    addFundraiser(
+      description: String!
+      posterUserame: String!
+      image: String!
+      title: String!
+    ): User
     removeFundraiser(fundraiserId: String!): User
-
- }
- `;
+    addContribution(
+      contributerEmail: String!
+      contributedAmount: Float
+      fundraiserId: String!
+    ): User
+  }
+`;
 
 module.exports = typeDefs;
