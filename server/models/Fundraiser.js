@@ -1,30 +1,37 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
+const contributionSchema = require("./Contribution");
 
-const fundraiserSchema = new Schema({
-  poster: [
-    {
+const fundraiserSchema = new Schema(
+  {
+    description: {
+      type: String,
+      required: true,
+    },
+
+    posterUsername: {
+      type: String,
+      required: true,
+    },
+    image: {
       type: String,
     },
-  ],
-  description: {
-    type: String,
-    required: true,
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    contributions: [contributionSchema],
   },
-  // saved fundrasier id from from site
-  fundraiserId: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-  },
-  link: {
-    type: String,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-});
+  {
+    toJSON: {
+      getters: true,
+    },
+  }
+);
 
-module.exports = fundraiserSchema;
+const Fundraiser = model("fundraiser", fundraiserSchema);
+
+module.exports = Fundraiser;

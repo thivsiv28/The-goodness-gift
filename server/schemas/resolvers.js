@@ -10,7 +10,7 @@ const resolvers = {
       }
       return await User.findById(context.user._id).populate("savedFundraisers");
     },
-    savedFundraisers: async (parent, args, context) => {
+    createdFundraisers: async (parent, args, context) => {
       if (!context.user) {
         return [];
       }
@@ -21,6 +21,7 @@ const resolvers = {
 
       return user.savedFundraisers;
     },
+    getFundraiserById: async (parent, { fundraiserId }) => {},
   },
 
   Mutation: {
@@ -47,7 +48,11 @@ const resolvers = {
       return { token, user };
     },
 
-    addFundraiser: async (parent, { fundraiser }, context) => {
+    addFundraiser: async (
+      parent,
+      { description, posterUsername, image, title },
+      context
+    ) => {
       console.log("Adding new fundraiser", fundraiser, context.user._id);
       try {
         await User.findOneAndUpdate(
@@ -63,7 +68,7 @@ const resolvers = {
         return {};
       }
     },
-    removedFundraiser: async (parent, { fundraiserId }, context) => {
+    removeFundraiser: async (parent, { fundraiserId }, context) => {
       console.log("Remove fundraiser", fundraiserId, context.user._id);
       try {
         await User.findOneAndUpdate(
@@ -79,6 +84,10 @@ const resolvers = {
         return {};
       }
     },
+    addContribution: async (
+      parent,
+      { contributerEmail, contributedAmount, fundraiserId }
+    ) => {},
   },
 };
 
