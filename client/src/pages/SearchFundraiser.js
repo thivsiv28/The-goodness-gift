@@ -126,7 +126,7 @@ const SearchFundraisers = () => {
                 ) : null}
                   <Card.Body>
                   <Card.Title>{fundraiser.title}</Card.Title>
-                  <p className="small">Poster:{fundraiser.authors}</p>
+                  <p className="small">Poster:{fundraiser.poster}</p>
                   <Card.Text>{fundraiser.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
