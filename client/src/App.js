@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CreatedFundraiser from "./pages/CreatedFundraiser";
 import SearchFundraiser from "./pages/SearchFundraiser";
 import Navbar from "./components/Navbar";
+import FundraiserDetail from "./pages/FundraiserDetail";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -44,10 +45,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SearchFundraiser />} />
             <Route path="/created" element={<CreatedFundraiser />} />
-            <Route
-              path="*"
-              element={<h1 className="display-2">Wrong page!</h1>}
-            />
+            <Route path="/fundraiser/:id" element={<FundraiserDetail />} />
           </Routes>
         </>
       </Router>

@@ -12,8 +12,9 @@ export const GET_ME = gql`
         description
         image
         title
+        id
         contributions {
-          contributerEmail
+          contributorUsername
           contributedAmount
           contributedAt
         }
@@ -32,7 +33,25 @@ export const GET_ALL_FUNDRAISERS = gql`
       image
       title
       contributions {
-        contributerEmail
+        contributorUsername
+        contributedAmount
+        contributedAt
+      }
+      createdAt
+    }
+  }
+`;
+
+export const GET_FUNDRAISER_BY_ID = gql`
+  query GetFundraiserById($fundraiserId: String!) {
+    getFundraiserById(fundraiserId: $fundraiserId) {
+      id
+      posterUsername
+      description
+      image
+      title
+      contributions {
+        contributorUsername
         contributedAmount
         contributedAt
       }

@@ -15,7 +15,7 @@ export const ADD_USER = gql`
           image
           title
           contributions {
-            contributerEmail
+            contributorUsername
             contributedAmount
             contributedAt
           }
@@ -41,7 +41,7 @@ export const LOGIN_USER = gql`
           image
           title
           contributions {
-            contributerEmail
+            contributorUsername
             contributedAmount
             contributedAt
           }
@@ -65,7 +65,7 @@ export const REMOVE_FUNDRAISER = gql`
         image
         title
         contributions {
-          contributerEmail
+          contributorUsername
           contributedAmount
           contributedAt
         }
@@ -99,7 +99,7 @@ export const SAVE_FUNDRAISER = gql`
         image
         title
         contributions {
-          contributerEmail
+          contributorUsername
           contributedAmount
           contributedAt
         }

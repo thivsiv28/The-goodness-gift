@@ -8,7 +8,12 @@ const resolvers = {
       if (!context.user) {
         return null;
       }
-      return await User.findById(context.user._id).populate("savedFundraisers");
+      const user = await User.findById(context.user._id);
+      const fundraisers = await Fundraiser.find({
+        posterUsername: user.username,
+      });
+      user.createdFundraisers = fundraisers;
+      return user;
     },
     createdFundraisers: async (parent, args, context) => {
       if (!context.user) {
@@ -21,9 +26,10 @@ const resolvers = {
 
       return user.savedFundraisers;
     },
-    getFundraiserById: async (parent, { fundraiserId }) => {},
+    getFundraiserById: async (parent, { fundraiserId }) => {
+      return await Fundraiser.findById(fundraiserId).populate("contributions");
+    },
     getAllFundRaisers: async (parent) => {
-      await new Promise((r) => setTimeout(r, 1000));
       return await Fundraiser.find({});
     },
   },
@@ -72,13 +78,8 @@ const resolvers = {
         const fundraisers = await Fundraiser.find({
           posterUsername: user.username,
         });
-        console.log("user has ", fundraisers);
         user.createdFundraisers = fundraisers;
         return user;
-
-        return await User.findById(context.user._id).populate(
-          "createdFundraisers"
-        );
       } catch (err) {
         console.error("Error creating fundraiser", err);
         return {};
@@ -102,8 +103,23 @@ const resolvers = {
     },
     addContribution: async (
       parent,
-      { contributerEmail, contributedAmount, fundraiserId }
-    ) => {},
+      { contributorUsername, contributedAmount, fundraiserId }
+    ) => {
+      await new Promise((r) => setTimeout(r, 1000));
+      let fundraiser = await Fundraiser.findOneAndUpdate(
+        { _id: fundraiserId },
+        {
+          $addToSet: {
+            contributions: {
+              contributorUsername,
+              contributedAmount,
+            },
+          },
+        }
+      );
+
+      return fundraiser.contributions.pop();
+    },
   },
 };
 
