@@ -20,7 +20,7 @@ const typeDefs = gql`
   }
 
   type Contribution {
-    contributerEmail: String!
+    contributorUsername: String!
     contributedAmount: Float
     contributedAt: String
   }
@@ -59,10 +59,10 @@ const typeDefs = gql`
     ): User
     removeFundraiser(fundraiserId: String!): User
     addContribution(
-      contributerEmail: String!
+      contributorUsername: String!
       contributedAmount: Float
       fundraiserId: String!
-    ): User
+    ): Contribution
   }
 `;
 

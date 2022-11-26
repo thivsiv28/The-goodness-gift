@@ -12,6 +12,7 @@ import { removeFundraiserId } from "../utils/localStorage";
 import { useQuery, useMutation, useLazyQuery } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
 import { REMOVE_FUNDRAISER } from "../utils/mutations";
+import FundraiserCard from "../components/FundraiserCard";
 
 const CreatedFundraiser = () => {
   const [userData, setUserData] = useState({});
@@ -54,22 +55,7 @@ const CreatedFundraiser = () => {
         </h2>
         <CardColumns>
           {userData.createdFundraisers.map((fundraiser) => {
-            return (
-              <Card key={fundraiser.fundraiserId} border="dark">
-                {fundraiser.image ? (
-                  <Card.Img
-                    src={fundraiser.image}
-                    alt={`The cover for ${fundraiser.title}`}
-                    variant="top"
-                  />
-                ) : null}
-                <Card.Body>
-                  <Card.Title>{fundraiser.title}</Card.Title>
-                  <p className="small">Poster: {fundraiser.poster}</p>
-                  <Card.Text>{fundraiser.description}</Card.Text>
-                </Card.Body>
-              </Card>
-            );
+            return <FundraiserCard fundraiser={fundraiser} />;
           })}
         </CardColumns>
       </Container>

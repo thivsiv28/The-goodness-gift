@@ -5,7 +5,6 @@ const { AuthenticationError } = require("apollo-server-express");
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      await new Promise((r) => setTimeout(r, 1000));
       if (!context.user) {
         return null;
       }
@@ -27,7 +26,9 @@ const resolvers = {
 
       return user.savedFundraisers;
     },
-    getFundraiserById: async (parent, { fundraiserId }) => {},
+    getFundraiserById: async (parent, { fundraiserId }) => {
+      return await Fundraiser.findById(fundraiserId).populate("contributions");
+    },
     getAllFundRaisers: async (parent) => {
       return await Fundraiser.find({});
     },
@@ -102,8 +103,23 @@ const resolvers = {
     },
     addContribution: async (
       parent,
-      { contributerEmail, contributedAmount, fundraiserId }
-    ) => {},
+      { contributorUsername, contributedAmount, fundraiserId }
+    ) => {
+      await new Promise((r) => setTimeout(r, 1000));
+      let fundraiser = await Fundraiser.findOneAndUpdate(
+        { _id: fundraiserId },
+        {
+          $addToSet: {
+            contributions: {
+              contributorUsername,
+              contributedAmount,
+            },
+          },
+        }
+      );
+
+      return fundraiser.contributions.pop();
+    },
   },
 };
 

@@ -2,7 +2,7 @@ const { Schema, Types } = require("mongoose");
 
 const contributionSchema = new Schema(
   {
-    contributerEmail: {
+    contributorUsername: {
       type: String,
       required: true,
     },
