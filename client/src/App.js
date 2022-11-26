@@ -44,10 +44,6 @@ function App() {
           <Routes>
             <Route path="/" element={<SearchFundraiser />} />
             <Route path="/created" element={<CreatedFundraiser />} />
-            <Route
-              path="*"
-              element={<h1 className="display-2">Wrong page!</h1>}
-            />
           </Routes>
         </>
       </Router>
