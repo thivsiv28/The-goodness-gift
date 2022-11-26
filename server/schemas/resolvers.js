@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Fundraiser } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
@@ -22,6 +22,10 @@ const resolvers = {
       return user.savedFundraisers;
     },
     getFundraiserById: async (parent, { fundraiserId }) => {},
+    getAllFundRaisers: async (parent) => {
+      await new Promise((r) => setTimeout(r, 1000));
+      return await Fundraiser.find({});
+    },
   },
 
   Mutation: {
@@ -53,15 +57,27 @@ const resolvers = {
       { description, posterUsername, image, title },
       context
     ) => {
-      console.log("Adding new fundraiser", fundraiser, context.user._id);
+      console.log(
+        "Adding new fundraiser",
+        description,
+        posterUsername,
+        image,
+        title,
+        context.user._id
+      );
       try {
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { savedFundraisers: fundraiser } }
-        );
+        await Fundraiser.create({ description, posterUsername, image, title });
+
+        const user = await User.findById(context.user._id);
+        const fundraisers = await Fundraiser.find({
+          posterUsername: user.username,
+        });
+        console.log("user has ", fundraisers);
+        user.createdFundraisers = fundraisers;
+        return user;
 
         return await User.findById(context.user._id).populate(
-          "savedFundraisers"
+          "createdFundraisers"
         );
       } catch (err) {
         console.error("Error creating fundraiser", err);
