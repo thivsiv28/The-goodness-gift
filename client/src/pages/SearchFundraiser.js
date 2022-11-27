@@ -14,7 +14,7 @@ import {
   saveFundraiserIds,
   getSavedFundraiserIds,
 } from "../utils/localStorage";
-import { SAVE_FUNDRAISER } from "../utils/mutations";
+import { ADD_FUNDRAISER } from "../utils/mutations";
 import { GET_ALL_FUNDRAISERS } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import FundraiserCard from "../components/FundraiserCard";
@@ -27,7 +27,6 @@ const SearchFundraisers = () => {
   const [savedFundraiserIds, setSavedFundraiserIds] = useState(
     getSavedFundraiserIds()
   );
-  const [addFundraiser, { error, data }] = useMutation(SAVE_FUNDRAISER);
 
   const getAllFundRaisers = useQuery(GET_ALL_FUNDRAISERS, {
     onCompleted: (fundData) => {
@@ -54,7 +53,7 @@ const SearchFundraisers = () => {
           <h1>Browse Fundraisers!</h1>
         </Container>
       </Jumbotron>
-      {getAllFundRaisers.loading && <h1>Loading</h1>}
+      {getAllFundRaisers.loading && <h1>Loading fundraisers</h1>}
       {!getAllFundRaisers.loading && searchedFundraisers && (
         <Container>
           <h2> Viewing {searchedFundraisers.length} results</h2>

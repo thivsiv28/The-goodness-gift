@@ -1,6 +1,10 @@
 const { User, Fundraiser } = require("../models");
 const { signToken } = require("../utils/auth");
-const { AuthenticationError } = require("apollo-server-express");
+const {
+  AuthenticationError,
+  UserInputError,
+} = require("apollo-server-express");
+const valid = require("card-validator");
 
 const resolvers = {
   Query: {
@@ -103,9 +107,28 @@ const resolvers = {
     },
     addContribution: async (
       parent,
-      { contributorUsername, contributedAmount, fundraiserId }
+      { contributorUsername, contributedAmount, fundraiserId, card }
     ) => {
-      await new Promise((r) => setTimeout(r, 1000));
+      if (!valid.number(card.number).isValid) {
+        throw new UserInputError("Invalid credit card number");
+      }
+
+      if (!valid.expirationMonth(card.expirationMonth).isValid) {
+        throw new UserInputError("Invalid expiration month");
+      }
+
+      if (!valid.expirationYear(card.expirationYear).isValid) {
+        throw new UserInputError("Invalid expiration year");
+      }
+
+      if (!valid.cvv(card.cvv).isValid) {
+        throw new UserInputError("Invalid cvv");
+      }
+
+      if (!valid.cardholderName(card.name).isValid) {
+        throw new UserInputError("Invalid name");
+      }
+
       let fundraiser = await Fundraiser.findOneAndUpdate(
         { _id: fundraiserId },
         {
@@ -117,8 +140,9 @@ const resolvers = {
           },
         }
       );
+      console.log("card", card);
 
-      return fundraiser.contributions.pop();
+      return await Fundraiser.findById(fundraiserId).populate("contributions");
     },
   },
 };

@@ -42,6 +42,14 @@ const typeDefs = gql`
     title: String!
   }
 
+  input CreditCard {
+    name: String!
+    number: String!
+    expirationMonth: String!
+    expirationYear: String!
+    cvv: String!
+  }
+
   type Query {
     me: User
     createdFundraisers: [Fundraiser]
@@ -62,7 +70,8 @@ const typeDefs = gql`
       contributorUsername: String!
       contributedAmount: Float
       fundraiserId: String!
-    ): Contribution
+      card: CreditCard!
+    ): Fundraiser
   }
 `;
 
