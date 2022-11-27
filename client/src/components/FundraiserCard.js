@@ -5,6 +5,13 @@ const FundraiserCard = ({ fundraiser }) => {
     return `/fundraiser/${id}`;
   };
 
+  const getShortDescription = (description) => {
+    if (description.length > 10) {
+      return description.substring(0, 10) + "...";
+    }
+
+    return description;
+  };
   return (
     <Card key={fundraiser.fundraiserId} border="dark">
       {fundraiser.image ? (
@@ -17,7 +24,7 @@ const FundraiserCard = ({ fundraiser }) => {
       <Card.Body>
         <Card.Title>{fundraiser.title}</Card.Title>
         <p className="small">Poster: {fundraiser.posterUsername}</p>
-        <Card.Text>{fundraiser.description}</Card.Text>
+        <Card.Text>{getShortDescription(fundraiser.description)}</Card.Text>
         <Button className="btn-block btn-info" href={getUrl(fundraiser.id)}>
           View more details
         </Button>

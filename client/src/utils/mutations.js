@@ -52,30 +52,7 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const REMOVE_FUNDRAISER = gql`
-  mutation RemoveFundraiser($fundraiserId: String!) {
-    removeFundraiser(fundraiserId: $fundraiserId) {
-      _id
-      username
-      email
-      password
-      createdFundraisers {
-        posterUsername
-        description
-        image
-        title
-        contributions {
-          contributorUsername
-          contributedAmount
-          contributedAt
-        }
-        createdAt
-      }
-    }
-  }
-`;
-
-export const SAVE_FUNDRAISER = gql`
+export const ADD_FUNDRAISER = gql`
   mutation AddFundraiser(
     $description: String!
     $image: String!
@@ -105,6 +82,34 @@ export const SAVE_FUNDRAISER = gql`
         }
         createdAt
       }
+    }
+  }
+`;
+
+export const ADD_CONTRIBUTION = gql`
+  mutation AddContribution(
+    $contributorUsername: String!
+    $fundraiserId: String!
+    $card: CreditCard!
+    $contributedAmount: Float
+  ) {
+    addContribution(
+      contributorUsername: $contributorUsername
+      fundraiserId: $fundraiserId
+      card: $card
+      contributedAmount: $contributedAmount
+    ) {
+      id
+      posterUsername
+      description
+      image
+      title
+      contributions {
+        contributorUsername
+        contributedAmount
+        contributedAt
+      }
+      createdAt
     }
   }
 `;
