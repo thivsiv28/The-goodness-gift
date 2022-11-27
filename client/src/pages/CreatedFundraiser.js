@@ -37,7 +37,6 @@ const CreatedFundraiser = () => {
     return <h1>Please login to save the fundraiser</h1>;
   }
 
-  // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
   const handleInputChange = (e) => {
@@ -66,7 +65,6 @@ const CreatedFundraiser = () => {
     }
   };
 
-  // If data isn't here yet, say so
   if (!userDataLength) {
     return <h2>LOADING data...</h2>;
   }

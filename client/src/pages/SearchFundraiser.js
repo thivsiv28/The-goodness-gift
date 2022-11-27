@@ -21,9 +21,7 @@ import FundraiserCard from "../components/FundraiserCard";
 
 const SearchFundraisers = () => {
   const [searchedFundraisers, setSearchedFundraisers] = useState([]);
-  // Create state for holding our search field data
   const [searchInput, setSearchInput] = useState("");
-  // create state to hold saved fundraiserId values
   const [savedFundraiserIds, setSavedFundraiserIds] = useState(
     getSavedFundraiserIds()
   );
@@ -36,12 +34,10 @@ const SearchFundraisers = () => {
     },
   });
 
-  // set up useEffect hook to save `savedFundraiserIds` list to localStorage on component unmount
   useEffect(() => {
     return () => saveFundraiserIds(savedFundraiserIds);
   });
 
-  // Create function to handle saving a fundraiser to our database
   const handleSaveFundraiser = async (fundraiserId) => {
     return;
   };
