@@ -44,7 +44,7 @@ const SearchFundraisers = () => {
 
   return (
     <>
-      <Jumbotron fluid className="text-light bg-dark">
+      <Jumbotron fluid className="text-light page-header">
         <Container>
           <h1>Browse Fundraisers!</h1>
         </Container>
