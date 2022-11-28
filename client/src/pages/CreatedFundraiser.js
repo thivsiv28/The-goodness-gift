@@ -71,12 +71,13 @@ const CreatedFundraiser = () => {
 
   return (
     <>
-      <Jumbotron fluid className="text-light bg-dark">
+      <Jumbotron fluid className="text-light page-header">
         <Container>
           <h1>Viewing created fundraisers!</h1>
         </Container>
       </Jumbotron>
-      <Container>
+      <Container className="form">
+        <h2>Create new fundraiser</h2>
         <Form noValidate onSubmit={handleFundraiserCreate}>
           {created && (
             <Alert
@@ -120,6 +121,7 @@ const CreatedFundraiser = () => {
           <Form.Group>
             <Form.Label htmlFor="description">Description</Form.Label>
             <Form.Control
+              as="textarea"
               type="text"
               placeholder="Description"
               name="description"
