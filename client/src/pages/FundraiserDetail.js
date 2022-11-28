@@ -194,7 +194,7 @@ const FundraiserDetail = () => {
                 <Col>
                   <Form.Group>
                     <Form.Label htmlFor="creditCardExpirationMonth">
-                      Epiration month on Card
+                      Expiration month on Card
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -212,7 +212,7 @@ const FundraiserDetail = () => {
                 <Col>
                   <Form.Group>
                     <Form.Label htmlFor="creditCardExpirationYear">
-                      Epiration Year on Card
+                      Expiration Year on Card
                     </Form.Label>
                     <Form.Control
                       type="text"
@@ -239,13 +239,13 @@ const FundraiserDetail = () => {
                       value={contributionFormData.creditCardCvv}
                     />
                     <Form.Control.Feedback type="invalid">
-                      CVC is required.
+                      CVV is required.
                     </Form.Control.Feedback>
                   </Form.Group>
                 </Col>
               </Row>
 
-              <Button type="submit" variant="success">
+              <Button type="submit" variant="success" className="paymentBtn">
                 Submit
               </Button>
             </Form>

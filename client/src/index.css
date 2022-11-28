@@ -20,11 +20,42 @@ h6 {
   background-color: #F5E6E8;
 }
 
+.submitButton {
+  background-color: #271951
+}
+.submitBtn:hover {
+  background-color: #583da8;
+}
+
+.signupBtn{
+  background-color: #271951;
+}
+
+.signupBtn:hover {
+  background-color: #583da8;
+}
+
+.createBtn {
+  background-color: #271951;
+}
+.createBtn:hover {
+  background-color: #583da8;
+}
+
+.paymentBtn {
+  background-color: #271951;
+}
+
+.paymentBtn:hover {
+  background-color: #583da8;
+}
+
 .site-title {
   font-size: x-large;
   font-weight: 900;
   color: #192A51;
 }
+
 
 .page-header {
   background-color: #271951;
