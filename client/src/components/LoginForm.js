@@ -85,8 +85,7 @@ const LoginForm = () => {
         <Button
           disabled={!(userFormData.email && userFormData.password)}
           type="submit"
-          variant="success"
-          className="submitButton"
+          className="more-details"
         >
           Submit
         </Button>
