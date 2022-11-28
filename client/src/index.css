@@ -15,3 +15,64 @@ h6 {
   font-weight: 300;
   font-style: italic;
 }
+
+.color-nav {
+  background-color: #F5E6E8;
+}
+
+.site-title {
+  font-size: x-large;
+  font-weight: 900;
+  color: #192A51;
+}
+
+.page-header {
+  background-color: #271951;
+  color: #F5E6E8;
+  text-align: center;
+}
+.page-header h1 {
+  color: #F5E6E8;
+}
+.nav-text {
+  color: #fff;
+  font-weight: 450;
+  font-size: larger;
+}
+
+body {
+  background-color: #fff9fa;
+} 
+
+.form {
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc;
+  padding: 35px  15px 25px 15px;
+  margin-bottom: 30px;
+  margin-top: 14px;
+  border-radius: 10px;
+}
+.more-details {
+  background-color: #271951;
+}
+.more-details:hover {
+  background-color: #583da8;
+}
+
+.fundraiser-card:hover {
+  background-color: #dbc6c8;
+  box-shadow: 0 0 3px #aaa;
+}
+
+.contributions {
+  background-color: #fff;
+  padding: 10px  15px 10px 15px;
+  margin-bottom: 30px;
+  margin-top: 14px;
+  border-radius: 10px;
+}
+.contribution-detail {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}
