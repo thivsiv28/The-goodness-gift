@@ -52,9 +52,9 @@ const SearchFundraisers = () => {
       {getAllFundRaisers.loading && <h1>Loading fundraisers</h1>}
       {!getAllFundRaisers.loading && searchedFundraisers && (
         <Container>
-          <h2> Viewing {searchedFundraisers.length} results</h2>
+          <h2>{searchedFundraisers.length} Fundraisers</h2>
           <CardColumns>
-            {searchedFundraisers.map((fundraiser) => {
+            {[...searchedFundraisers].reverse().map((fundraiser) => {
               return <FundraiserCard fundraiser={fundraiser} />;
             })}
           </CardColumns>

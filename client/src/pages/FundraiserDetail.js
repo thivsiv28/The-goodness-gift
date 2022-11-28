@@ -110,7 +110,13 @@ const FundraiserDetail = () => {
               })}
             </div>
           </Col>
-          <Col xs={8}>{fundraiserData.description}</Col>
+          <Col xs={8}>
+            <div class="form">
+              Created by <strong>{fundraiserData.posterUsername}</strong> on{" "}
+              <em>{fundraiserData.createdAt}</em>
+            </div>
+            <p>{fundraiserData.description}</p>
+          </Col>
         </Row>
 
         <div className="form">
