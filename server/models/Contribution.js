@@ -1,8 +1,12 @@
 const { Schema, Types } = require("mongoose");
 
+const dateFormatter = (date) => {
+  return date.toLocaleString();
+};
+
 const contributionSchema = new Schema(
   {
-    contributerEmail: {
+    contributorUsername: {
       type: String,
       required: true,
     },
@@ -13,6 +17,7 @@ const contributionSchema = new Schema(
     contributedAt: {
       type: Date,
       default: Date.now(),
+      get: dateFormatter,
     },
   },
   {
