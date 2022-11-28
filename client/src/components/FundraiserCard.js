@@ -13,7 +13,7 @@ const FundraiserCard = ({ fundraiser }) => {
     return description;
   };
   return (
-    <Card key={fundraiser.fundraiserId} border="dark">
+    <Card key={fundraiser.fundraiserId} className="fundraiser-card">
       {fundraiser.image ? (
         <Card.Img
           src={fundraiser.image}
@@ -25,7 +25,7 @@ const FundraiserCard = ({ fundraiser }) => {
         <Card.Title>{fundraiser.title}</Card.Title>
         <p className="small">Poster: {fundraiser.posterUsername}</p>
         <Card.Text>{getShortDescription(fundraiser.description)}</Card.Text>
-        <Button className="btn-block btn-info" href={getUrl(fundraiser.id)}>
+        <Button className="btn-block more-details" href={getUrl(fundraiser.id)}>
           View more details
         </Button>
       </Card.Body>
