@@ -2,6 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Fundraiser {
+    id: String!
     posterUsername: String!
     description: String!
     image: String
@@ -19,7 +20,7 @@ const typeDefs = gql`
   }
 
   type Contribution {
-    contributerEmail: String!
+    contributorUsername: String!
     contributedAmount: Float
     contributedAt: String
   }
@@ -41,26 +42,36 @@ const typeDefs = gql`
     title: String!
   }
 
+  input CreditCard {
+    name: String!
+    number: String!
+    expirationMonth: String!
+    expirationYear: String!
+    cvv: String!
+  }
+
   type Query {
     me: User
     createdFundraisers: [Fundraiser]
     getFundraiserById(fundraiserId: String!): Fundraiser
+    getAllFundRaisers: [Fundraiser]
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addFundraiser(
       description: String!
-      posterUserame: String!
+      posterUsername: String!
       image: String!
       title: String!
     ): User
     removeFundraiser(fundraiserId: String!): User
     addContribution(
-      contributerEmail: String!
+      contributorUsername: String!
       contributedAmount: Float
       fundraiserId: String!
-    ): User
+      card: CreditCard!
+    ): Fundraiser
   }
 `;
 
