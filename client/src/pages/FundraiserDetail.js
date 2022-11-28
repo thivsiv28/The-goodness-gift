@@ -110,147 +110,161 @@ const FundraiserDetail = () => {
               })}
             </div>
           </Col>
-          <Col xs={8}>{fundraiserData.description}</Col>
+          <Col xs={8}>
+            <div class="form">
+              Created by <strong>{fundraiserData.posterUsername}</strong> on{" "}
+              <em>{fundraiserData.createdAt}</em>
+            </div>
+            <p>{fundraiserData.description}</p>
+          </Col>
         </Row>
-        {Auth.loggedIn() && (
-          <div className="form">
-            <h3>Contribute to this cause!</h3>
-            <br />
-            <Form onSubmit={handleContributionSubmit}>
-              {donated && (
-                <Alert
-                  dismissible
-                  variant="success"
-                  onClose={() => {
-                    setDonated(false);
-                  }}
-                >
-                  Thank you for your contribution!
-                </Alert>
-              )}
-              {addContributionResp &&
-                addContributionResp.error &&
-                addContributionResp.error.message && (
-                  <Alert dismissible variant="danger">
-                    {addContributionResp.error.message}
+
+        <div className="form">
+          {!Auth.loggedIn() && (
+            <h3>Please login to contribute to this cause!</h3>
+          )}
+          {Auth.loggedIn() && (
+            <>
+              <h3>Contribute to this cause!</h3>
+              <br />
+              <Form onSubmit={handleContributionSubmit}>
+                {donated && (
+                  <Alert
+                    dismissible
+                    variant="success"
+                    onClose={() => {
+                      setDonated(false);
+                    }}
+                  >
+                    Thank you for your contribution!
                   </Alert>
                 )}
-              <Row>
-                <Col xs={5}>
-                  <Form.Group>
-                    <Form.Label htmlFor="creditCardName">
-                      Name on Card
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Name on card"
-                      name="creditCardName"
-                      onChange={handleInputChange}
-                      required
-                      value={contributionFormData.creditCardName}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Name is required.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col xs={2}>
-                  <Form.Group>
-                    <Form.Label htmlFor="amount">Donation amount</Form.Label>
-                    <Form.Control
-                      type="number"
-                      placeholder=""
-                      name="amount"
-                      onChange={handleInputChange}
-                      required
-                      width={31}
-                      value={contributionFormData.amount}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Amount is required.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col xs={5}>
-                  <Form.Group>
-                    <Form.Label htmlFor="creditCardNumber">
-                      Number on Card
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder=""
-                      name="creditCardNumber"
-                      onChange={handleInputChange}
-                      required
-                      value={contributionFormData.creditCardNumber}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Number is required.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Form.Group>
-                    <Form.Label htmlFor="creditCardExpirationMonth">
-                      Epiration month on Card
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="mm"
-                      name="creditCardExpirationMonth"
-                      onChange={handleInputChange}
-                      required
-                      value={contributionFormData.creditCardExpirationMonth}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Expiration Month is required.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group>
-                    <Form.Label htmlFor="creditCardExpirationYear">
-                      Epiration Year on Card
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="mm"
-                      name="creditCardExpirationYear"
-                      onChange={handleInputChange}
-                      required
-                      value={contributionFormData.creditCardExpirationYear}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Expiration Year is required.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col>
-                  <Form.Group>
-                    <Form.Label htmlFor="creditCardCvv">Cvv number</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder=""
-                      name="creditCardCvv"
-                      onChange={handleInputChange}
-                      required
-                      value={contributionFormData.creditCardCvv}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      CVC is required.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
+                {addContributionResp &&
+                  addContributionResp.error &&
+                  addContributionResp.error.message && (
+                    <Alert dismissible variant="danger">
+                      {addContributionResp.error.message}
+                    </Alert>
+                  )}
+                <Row>
+                  <Col xs={5}>
+                    <Form.Group>
+                      <Form.Label htmlFor="creditCardName">
+                        Name on Card
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Name on card"
+                        name="creditCardName"
+                        onChange={handleInputChange}
+                        required
+                        value={contributionFormData.creditCardName}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Name is required.
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col xs={2}>
+                    <Form.Group>
+                      <Form.Label htmlFor="amount">Donation amount</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder=""
+                        name="amount"
+                        onChange={handleInputChange}
+                        required
+                        width={31}
+                        value={contributionFormData.amount}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Amount is required.
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col xs={5}>
+                    <Form.Group>
+                      <Form.Label htmlFor="creditCardNumber">
+                        Number on Card
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder=""
+                        name="creditCardNumber"
+                        onChange={handleInputChange}
+                        required
+                        value={contributionFormData.creditCardNumber}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Number is required.
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Group>
+                      <Form.Label htmlFor="creditCardExpirationMonth">
+                        Expiration month on Card
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="mm"
+                        name="creditCardExpirationMonth"
+                        onChange={handleInputChange}
+                        required
+                        value={contributionFormData.creditCardExpirationMonth}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Expiration Month is required.
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group>
+                      <Form.Label htmlFor="creditCardExpirationYear">
+                        Expiration Year on Card
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="mm"
+                        name="creditCardExpirationYear"
+                        onChange={handleInputChange}
+                        required
+                        value={contributionFormData.creditCardExpirationYear}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Expiration Year is required.
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col>
+                    <Form.Group>
+                      <Form.Label htmlFor="creditCardCvv">
+                        Cvv number
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder=""
+                        name="creditCardCvv"
+                        onChange={handleInputChange}
+                        required
+                        value={contributionFormData.creditCardCvv}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        CVV is required.
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-              <Button type="submit" variant="success">
-                Submit
-              </Button>
-            </Form>
-          </div>
-        )}
+                <Button type="submit" variant="success" className="paymentBtn">
+                  Submit
+                </Button>
+              </Form>
+            </>
+          )}
+        </div>
       </Container>
     </>
   );

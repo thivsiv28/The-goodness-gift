@@ -1,6 +1,10 @@
 const { Schema, model } = require("mongoose");
 const contributionSchema = require("./Contribution");
 
+const dateFormatter = (date) => {
+  return date.toDateString();
+};
+
 const fundraiserSchema = new Schema(
   {
     description: {
@@ -18,6 +22,7 @@ const fundraiserSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
+      get: dateFormatter,
     },
     title: {
       type: String,

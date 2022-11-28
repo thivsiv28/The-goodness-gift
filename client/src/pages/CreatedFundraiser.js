@@ -133,7 +133,7 @@ const CreatedFundraiser = () => {
               Description is required.
             </Form.Control.Feedback>
           </Form.Group>
-          <Button type="submit" variant="success">
+          <Button type="submit" variant="success" className="createBtn">
             Create
           </Button>
         </Form>
