@@ -9,6 +9,7 @@ import {
   Row,
   CardColumns,
 } from "react-bootstrap";
+import { Animated } from "react-animated-css";
 
 import Auth from "../utils/auth";
 import {
