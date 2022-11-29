@@ -49,8 +49,8 @@ const SearchFundraisers = () => {
     const reversed = [...searchedFundraisers].reverse();
     return reversed.filter((fundraiser) => {
       return (
-        fundraiser.title.includes(searchInput) ||
-        fundraiser.description.includes(searchInput)
+        fundraiser.title.toLowerCase().includes(searchInput.toLowerCase()) ||
+        fundraiser.description.toLowerCase().includes(searchInput.toLowerCase())
       );
     });
   };
