@@ -6,8 +6,10 @@ import {
   Form,
   Button,
   Card,
+  Row,
   CardColumns,
 } from "react-bootstrap";
+import { Animated } from "react-animated-css";
 
 import Auth from "../utils/auth";
 import {
@@ -38,23 +40,44 @@ const SearchFundraisers = () => {
     return () => saveFundraiserIds(savedFundraiserIds);
   });
 
-  const handleSaveFundraiser = async (fundraiserId) => {
-    return;
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
   };
 
+  const getFilteredResults = (allResult) => {
+    const reversed = [...searchedFundraisers].reverse();
+    return reversed.filter((fundraiser) => {
+      return (
+        fundraiser.title.includes(searchInput) ||
+        fundraiser.description.includes(searchInput)
+      );
+    });
+  };
   return (
     <>
       <Jumbotron fluid className="text-light page-header">
         <Container>
           <h1>Browse Fundraisers!</h1>
+
+          <Form.Group className="mb-3" controlId="formSearch">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="search"
+              width={50}
+              onChange={handleSearchChange}
+            />
+          </Form.Group>
         </Container>
       </Jumbotron>
+
       {getAllFundRaisers.loading && <h1>Loading fundraisers</h1>}
       {!getAllFundRaisers.loading && searchedFundraisers && (
         <Container>
-          <h2>{searchedFundraisers.length} Fundraisers</h2>
+          <h2>{getFilteredResults(searchedFundraisers).length} Fundraisers</h2>
           <CardColumns>
-            {[...searchedFundraisers].reverse().map((fundraiser) => {
+            {getFilteredResults(searchedFundraisers).map((fundraiser) => {
               return <FundraiserCard fundraiser={fundraiser} />;
             })}
           </CardColumns>
