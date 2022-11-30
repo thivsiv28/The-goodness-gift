@@ -1,6 +1,8 @@
-# The-goodness-gift
+## Interactive MERN Stack Single-Page Application - The Goodness Gift
 
-Project 3 - Interactive MERN Stack Single-Page Application
+&nbsp;
+
+## Table of Contents:
 
 - [Description](#description)
 - [User Story](#user-story)
@@ -58,7 +60,31 @@ THEN I am shown a form where I will input info to start a fundraiser of my choic
 
 [Github Repository](https://github.com/thivsiv28/The-goodness-gift)
 
-## Visualization
+## Visualization:
+
+##### This is the main page:
+
+![this is the main page](./mainpage.png)
+
+#### This is the login/signup window:
+
+![this is the login/signup window](./loginwindow.png)
+
+##### This is the fundraiser posts view:
+
+![this is the fundraiser posts view](./fundraiserposts.png)
+
+#### This is the fundraiser details page view when an user is not logged in:
+
+![this is the fundraiser details page without loggin in](./fundraiserdetailpagelogin.png)
+
+#### This is the created fundraiser's page view once logged in:
+
+![this is the created fundraisers page view](./createdfundraiserspage.png)
+
+##### This is the view of the fundraisers page and contribution window when an user logs in:
+
+![this is the view of the fundraisers page when you log in](./fundraiserdetailspage.png)
 
 ## Contributors and Github Profile Links
 
