@@ -12,7 +12,7 @@ Project 3 - Interactive MERN Stack Single-Page Application
 
 ## Description
 
-.
+The Goodness Gift  is a crowd- funding application  that will allow people to raise money for events ranging from life events (eg. celebrations, graduations) to challenging circumstances (eg. accidents and illnesses) to community events (eg. school funding, food drives). Users of this application have the option to 1. Create their own fundraiser post and raise funds for that cause. Or 2. Make a charitable donation to a cause from the list of existing fundraiser posts.At first glance , you will be able to browse from existing fundraisers. However,  in order to interact with the site (eg .make your own posts, make a donation, or see other users’ contributed amounts) users would need to either sign up for a new account or login first. 
 
 ## Deployment
 
@@ -27,6 +27,14 @@ Project 3 - Interactive MERN Stack Single-Page Application
 [Presentation Slideshow](https://docs.google.com/presentation/d/184ovtSGF6jP_AoehKUErC_mRiMLouDPa9FdlyypscB4/edit#slide=id.g19d664934af_0_673)
 
 ## Visualization
+![salty-lowlands-79836 herokuapp com_](https://user-images.githubusercontent.com/112586779/204689147-cc99d2a0-3daf-42f9-9fc0-cd80c9f52580.png)
+![salty-lowlands-79836 herokuapp com_ (1)](https://user-images.githubusercontent.com/112586779/204689187-a6ed6092-1185-4a50-a921-572125762d9c.png)
+![salty-lowlands-79836 herokuapp com_ (2)](https://user-images.githubusercontent.com/112586779/204689225-eb340ccc-ae61-4e23-9841-b28efca1cab7.png)
+![salty-lowlands-79836 herokuapp com_ (3)](https://user-images.githubusercontent.com/112586779/204689243-3be70788-0d33-4a93-8525-b924b9c14fd1.png)
+![salty-lowlands-79836 herokuapp com_created](https://user-images.githubusercontent.com/112586779/204689296-0d1bd689-e118-42a8-b9a2-4f9e2ae5626d.png)
+![salty-lowlands-79836 herokuapp com_fundraiser_6386b8ac3650e600160d3b0f](https://user-images.githubusercontent.com/112586779/204689653-077fd10b-3a1b-46c0-99fb-e9b2f8e4e548.png)
+
+
 
 ## Contributors and Github Profile Links
 
